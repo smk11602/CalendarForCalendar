@@ -26,7 +26,7 @@ class CustomDialog(context : Context, myInterface: CustomDialogInterface) : Dial
         var timeEditView : EditText = findViewById(R.id.TimeEditView)
 
         // 배경 투명하게 바꿔줌
-        window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+       // window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
 
         okButton.setOnClickListener {
             val name = nameEditView.text.toString()

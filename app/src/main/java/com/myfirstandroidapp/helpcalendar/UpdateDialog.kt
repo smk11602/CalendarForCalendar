@@ -1,6 +1,6 @@
 package com.myfirstandroidapp.helpcalendar
 
-import android.annotation.SuppressLint
+
 import android.app.Dialog
 import android.content.Context
 import android.graphics.Color
@@ -16,30 +16,32 @@ class UpdateDialog(context : Context, updateDialogInterface : UpdateDialogInterf
     // 액티비티에서 인터페이스를 받아옴
     private var updateDialogInterface: UpdateDialogInterface = updateDialogInterface
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.layout_dialog)
 
         var okButton : Button = findViewById(R.id.okButton)
         var cancelButton : Button = findViewById(R.id.cancelButton)
-        var exerciseEditView : EditText = findViewById(R.id.memoEditView)
+        var nameEditView : EditText = findViewById(R.id.NameEditView)
+        var timeEditView : EditText = findViewById(R.id.TimeEditView)
 
-        // 배경 투명하게 바꿔줌
-        window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+
+         window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
 
         okButton.setOnClickListener {
-            val content = exerciseEditView.text.toString()
+            val name = nameEditView.text.toString()
+            val timeStr = timeEditView.text.toString()
+            val time = timeStr.toIntOrNull()
 
             // 입력하지 않았을 때
-            if ( TextUtils.isEmpty(content)){
-                Toast.makeText(context, "수정할 내용을 입력해주세요.", Toast.LENGTH_SHORT).show()
+            if (TextUtils.isEmpty(name) || time == null){
+                Toast.makeText(context, "수정할 내용을 모두 입력해주세요.", Toast.LENGTH_SHORT).show()
             }
 
             // 입력 창이 비어 있지 않을 때
             else{
                 // 메모를 수정해줌
-                updateDialogInterface.onOkButtonClicked(content)
+                updateDialogInterface.onOkButtonClicked(name, time)
                 dismiss()
             }
         }

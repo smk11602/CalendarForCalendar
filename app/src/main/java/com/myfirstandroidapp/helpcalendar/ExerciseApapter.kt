@@ -24,6 +24,7 @@ class ExerciseAdapter(private val exerciseViewModel: ExerciseViewModel) : Recycl
             // 체크 리스너 초기화 해줘 중복 오류 방지
             binding.exerciseCheckBox.setOnCheckedChangeListener(null)
 
+            /*
             // 메모 체크 시 체크 데이터 업데이트
             binding.exerciseCheckBox.setOnCheckedChangeListener { _, check ->
                 if (check) {
@@ -37,7 +38,7 @@ class ExerciseAdapter(private val exerciseViewModel: ExerciseViewModel) : Recycl
                     this.exerciseViewModel.updateExercise(exercise)
                 }
             }
-
+*/
             // 삭제 버튼 클릭 시 메모 삭제
             binding.deleteButton.setOnClickListener {
                 exerciseViewModel.deleteExercise(currentExercise)
@@ -52,7 +53,7 @@ class ExerciseAdapter(private val exerciseViewModel: ExerciseViewModel) : Recycl
         }
 
         // 다이얼로그의 결과값으로 업데이트 해줌
-        override fun onOkButtonClicked(content: String) {
+        override fun onOkButtonClicked(name: String, time: Int) {
             val updateExercise = Exercise(0,exercise.check,exercise.name, exercise.time, exercise.year, exercise.month,exercise.day)
             exerciseViewModel.updateExercise(updateExercise)
         }

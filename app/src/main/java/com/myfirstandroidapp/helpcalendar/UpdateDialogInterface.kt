@@ -2,5 +2,5 @@ package com.myfirstandroidapp.helpcalendar
 
 
 interface UpdateDialogInterface {
-    fun onOkButtonClicked(content : String)
+    fun onOkButtonClicked(name: String, time: Int)
 }
